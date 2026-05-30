@@ -344,8 +344,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.208994708994709,
-      "y": 0.2395543175487465,
+      "x": 0.21494708994708994,
+      "y": 0.20891364902506962,
       "uniqueID": "id-259836",
       "name": "Bolt",
       "topLevel": false,
@@ -364,7 +364,7 @@
         },
         {
           "atomType": "Molecule",
-          "x": 0.29894179894179895,
+          "x": 0.3062169312169312,
           "y": 0.27019498607242337,
           "uniqueID": "id-259840",
           "name": "Nut",
@@ -684,8 +684,8 @@
         },
         {
           "atomType": "Move",
-          "x": 0.43452380952380953,
-          "y": 0.47075208913649025,
+          "x": 0.43716931216931215,
+          "y": 0.46239554317548753,
           "uniqueID": "id-261197",
           "ioValues": [
             {
@@ -702,8 +702,8 @@
             },
             {
               "name": "zDist",
-              "ioValue": 30,
-              "currentEquation": "30"
+              "ioValue": 40,
+              "currentEquation": "40"
             }
           ]
         }
@@ -3771,9 +3771,159 @@
         },
         {
           "name": "zDist",
-          "ioValue": -16
+          "ioValue": -15.5,
+          "currentEquation": "-15.5"
         }
       ]
+    },
+    {
+      "atomType": "Molecule",
+      "x": 0.6587301587301587,
+      "y": 0.8941504178272981,
+      "uniqueID": "id-261220",
+      "name": "To Print",
+      "ioValues": [
+        {
+          "name": "input",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "topLevel": false,
+      "allAtoms": [
+        {
+          "atomType": "Output",
+          "x": 0.98,
+          "y": 0.5,
+          "uniqueID": "id-261222",
+          "ioValues": [
+            {
+              "name": "number or geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
+        },
+        {
+          "atomType": "Input",
+          "x": 0.025384615384615384,
+          "y": 0.15384615384615385,
+          "uniqueID": "id-261224",
+          "name": "input",
+          "type": "geometry"
+        },
+        {
+          "atomType": "ExtractTag",
+          "x": 0.26719576719576715,
+          "y": 0.35097493036211697,
+          "uniqueID": "id-261227",
+          "name": "Extract Tag",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ],
+          "tag": "Top Plastic",
+          "tagIndex": 0
+        },
+        {
+          "atomType": "ExtractTag",
+          "x": 0.23412698412698413,
+          "y": 0.7799442896935932,
+          "uniqueID": "id-261230",
+          "name": "Extract Tag",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ],
+          "tag": "Bottom Plastic",
+          "tagIndex": 0
+        },
+        {
+          "atomType": "Export",
+          "x": 0.421957671957672,
+          "y": 0.4874651810584958,
+          "uniqueID": "id-261233",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "File Type",
+              "ioValue": "STL",
+              "currentEquation": "STL"
+            },
+            {
+              "name": "Resolution (dpi)",
+              "ioValue": 96
+            },
+            {
+              "name": "Part Name",
+              "ioValue": "Top Plastic",
+              "currentEquation": "Top Plastic"
+            }
+          ],
+          "type": null,
+          "resolution": 96,
+          "importIndex": 0,
+          "partName": "Top Plastic"
+        },
+        {
+          "atomType": "Export",
+          "x": 0.39616402116402116,
+          "y": 0.8662952646239555,
+          "uniqueID": "id-261238",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "File Type",
+              "ioValue": "STL",
+              "currentEquation": "STL"
+            },
+            {
+              "name": "Resolution (dpi)",
+              "ioValue": 96
+            },
+            {
+              "name": "Part Name",
+              "ioValue": "Bottom Plastic",
+              "currentEquation": "Bottom Plastic"
+            }
+          ],
+          "type": null,
+          "resolution": 96,
+          "importIndex": 0,
+          "partName": "Bottom Plastic"
+        }
+      ],
+      "allConnectors": [
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-261224",
+          "ap2ID": "id-261227"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-261224",
+          "ap2ID": "id-261230"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-261227",
+          "ap2ID": "id-261233"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-261230",
+          "ap2ID": "id-261238"
+        }
+      ],
+      "fileTypeVersion": 1
     }
   ],
   "allConnectors": [
@@ -3791,6 +3941,11 @@
       "ap2Name": "geometry",
       "ap1ID": "id-259980",
       "ap2ID": "id-261133"
+    },
+    {
+      "ap2Name": "input",
+      "ap1ID": "id-259980",
+      "ap2ID": "id-261220"
     },
     {
       "ap2Name": "Shape 1",
