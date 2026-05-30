@@ -1,13 +1,184 @@
 {
-    "atomType": "Molecule",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "id-259833",
-    "name": "Trolling_Motor_Top_Wire_Holder",
-    "topLevel": true,
-    "allAtoms": [],
-    "allConnectors": [],
-    "unitsKey": "MM",
-    "fileTypeVersion": 1,
-    "filetypeVersion": 1
+  "atomType": "Molecule",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "id-259833",
+  "name": "Trolling_Motor_Top_Wire_Holder",
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "id-259834",
+      "ioValues": [
+        {
+          "name": "number or geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Molecule",
+      "x": 0.2863756613756614,
+      "y": 0.5236768802228412,
+      "uniqueID": "id-259836",
+      "name": "Bolt",
+      "topLevel": false,
+      "allAtoms": [
+        {
+          "atomType": "Output",
+          "x": 0.98,
+          "y": 0.5,
+          "uniqueID": "id-259838",
+          "ioValues": [
+            {
+              "name": "number or geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
+        },
+        {
+          "atomType": "Molecule",
+          "x": 0.29894179894179895,
+          "y": 0.27019498607242337,
+          "uniqueID": "id-259840",
+          "name": "Nut",
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "id-259842",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            },
+            {
+              "atomType": "RegularPolygon",
+              "x": 0.5363756613756614,
+              "y": 0.7214484679665739,
+              "uniqueID": "id-259848",
+              "ioValues": [
+                {
+                  "name": "number of sides",
+                  "ioValue": 6
+                },
+                {
+                  "name": "diameter",
+                  "ioValue": 9.3,
+                  "currentEquation": "9.3"
+                }
+              ]
+            },
+            {
+              "atomType": "Extrude",
+              "x": 0.6363756613756614,
+              "y": 0.7214484679665739,
+              "uniqueID": "id-259852",
+              "ioValues": [
+                {
+                  "name": "geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                },
+                {
+                  "name": "height",
+                  "ioValue": 10
+                }
+              ]
+            }
+          ],
+          "allConnectors": [
+            {
+              "ap2Name": "geometry",
+              "ap1ID": "id-259848",
+              "ap2ID": "id-259852"
+            },
+            {
+              "ap2Name": "number or geometry",
+              "ap1ID": "id-259852",
+              "ap2ID": "id-259842"
+            }
+          ],
+          "fileTypeVersion": 1
+        },
+        {
+          "atomType": "Molecule",
+          "x": 0.22751322751322753,
+          "y": 0.7242339832869081,
+          "uniqueID": "id-259856",
+          "name": "Outline",
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "id-259858",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            }
+          ],
+          "allConnectors": [],
+          "fileTypeVersion": 1
+        },
+        {
+          "atomType": "Molecule",
+          "x": 0.3326719576719577,
+          "y": 0.6323119777158774,
+          "uniqueID": "id-259860",
+          "name": "Shaft",
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "id-259862",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            },
+            {
+              "atomType": "Circle",
+              "x": 0.2281746031746032,
+              "y": 0.67966573816156,
+              "uniqueID": "id-259864",
+              "ioValues": [
+                {
+                  "name": "diameter",
+                  "ioValue": 28.5
+                }
+              ]
+            }
+          ],
+          "allConnectors": [],
+          "fileTypeVersion": 1
+        }
+      ],
+      "allConnectors": [
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-259840",
+          "ap2ID": "id-259838"
+        }
+      ],
+      "fileTypeVersion": 1
+    }
+  ],
+  "allConnectors": [],
+  "unitsKey": "MM",
+  "fileTypeVersion": 1,
+  "filetypeVersion": 1
 }
