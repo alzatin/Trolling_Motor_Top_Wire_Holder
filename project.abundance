@@ -3080,9 +3080,9 @@
                 },
                 {
                   "atomType": "GitHubMolecule",
-                  "x": 0.4845735027223231,
-                  "y": 0.6585365853658536,
-                  "uniqueID": "id-261799",
+                  "x": 0.5036855036855037,
+                  "y": 0.576219512195122,
+                  "uniqueID": "id-262314",
                   "name": "Fillet-",
                   "ioValues": [
                     {
@@ -3091,8 +3091,7 @@
                     },
                     {
                       "name": "Radius",
-                      "ioValue": 7.5,
-                      "currentEquation": "7.5"
+                      "ioValue": 7.5
                     }
                   ],
                   "topLevel": false,
@@ -3101,7 +3100,7 @@
                       "atomType": "Output",
                       "x": 0.98,
                       "y": 0.5,
-                      "uniqueID": "id-261792",
+                      "uniqueID": "id-262308",
                       "ioValues": [
                         {
                           "name": "number or geometry",
@@ -3113,7 +3112,7 @@
                       "atomType": "Input",
                       "x": 0.025384615384615384,
                       "y": 0.15384615384615385,
-                      "uniqueID": "id-261793",
+                      "uniqueID": "id-262309",
                       "name": "Shape",
                       "type": "geometry"
                     },
@@ -3121,33 +3120,15 @@
                       "atomType": "Input",
                       "x": 0.025384615384615384,
                       "y": 0.24615384615384617,
-                      "uniqueID": "id-261794",
+                      "uniqueID": "id-262310",
                       "name": "Radius",
                       "type": "number"
-                    },
-                    {
-                      "atomType": "Code",
-                      "x": 0.3597883597883598,
-                      "y": 0.777158774373259,
-                      "uniqueID": "id-261795",
-                      "ioValues": [
-                        {
-                          "name": "inputShape",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        },
-                        {
-                          "name": "radius",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        }
-                      ],
-                      "interpreterVersion": 0,
-                      "code": "      //Inputs:[inputShape, radius]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n      let importedShape = library[inputShape]\n      \n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let chamferedShape = await Fillet(inputShape, radius);\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [chamferedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1"
                     },
                     {
                       "atomType": "Rectangle",
                       "x": 0.07738095238095238,
                       "y": 0.8495821727019498,
-                      "uniqueID": "id-261796",
+                      "uniqueID": "id-262311",
                       "ioValues": [
                         {
                           "name": "x length",
@@ -3163,7 +3144,7 @@
                       "atomType": "Extrude",
                       "x": 0.17539682539682538,
                       "y": 0.8217270194986073,
-                      "uniqueID": "id-261797",
+                      "uniqueID": "id-262312",
                       "ioValues": [
                         {
                           "name": "geometry",
@@ -3177,9 +3158,9 @@
                     },
                     {
                       "atomType": "Code",
-                      "x": 0.5054446460980037,
-                      "y": 0.41463414634146345,
-                      "uniqueID": "id-261798",
+                      "x": 0.4901639344262295,
+                      "y": 0.42378048780487804,
+                      "uniqueID": "id-262313",
                       "ioValues": [
                         {
                           "name": "inputShape",
@@ -3191,35 +3172,30 @@
                         }
                       ],
                       "interpreterVersion": 1,
-                      "code": "/**\n * Rounds sharp edges on a 3D solid geometry using fillets.\n * A fillet smooths out edges by rounding them to a specified radius.\n * All parameters have defaults so the atom works immediately.\n */\nfunction run(\n  inputShape: Assembly,\n  radius: number = 1.5,\n  edgeSelector?: boolean\n): Assembly {\n  // ── Step 1: Validate input geometry ──────────────────────────────────────\n  // Fillets only work on 3D solids, not 2D sketches or wires.\n  if (!inputShape?.geometry?.fillet) {\n    throw new Error(\"Input must be a 3D solid geometry\");\n  }\n\n  // ── Step 2: Apply fillet to selected edges ──────────────────────────────\n  // If no edge selector is provided, fillet all edges.\n  // Pass a selector like (e) => e.inPlane(\"XY\", z) to fillet only specific edges.\n  let filletedGeometry = inputShape.geometry;\n  if (edgeSelector) {\n    filletedGeometry = inputShape.geometry.fillet(radius, edgeSelector);\n  } else {\n    filletedGeometry = inputShape.geometry.fillet(radius);\n  }\n\n  // ── Step 3: Wrap in an Assembly preserving upstream properties ──────────\n  // Color, tags, and BOM info are inherited from the input shape.\n  const result: Assembly = new Assembly({\n    geometry: filletedGeometry,\n    color: inputShape.color,\n    tags: inputShape.tags,\n    plane: inputShape.plane,\n    bom: inputShape.bom,\n  });\n\n  return result;\n}",
-                      "compiledCode": "\"use strict\";\n/**\n * Rounds sharp edges on a 3D solid geometry using fillets.\n * A fillet smooths out edges by rounding them to a specified radius.\n * All parameters have defaults so the atom works immediately.\n */\nfunction run(inputShape, radius = 1.5, edgeSelector) {\n    // ── Step 1: Validate input geometry ──────────────────────────────────────\n    // Fillets only work on 3D solids, not 2D sketches or wires.\n    if (!inputShape?.geometry?.fillet) {\n        throw new Error(\"Input must be a 3D solid geometry\");\n    }\n    // ── Step 2: Apply fillet to selected edges ──────────────────────────────\n    // If no edge selector is provided, fillet all edges.\n    // Pass a selector like (e) => e.inPlane(\"XY\", z) to fillet only specific edges.\n    let filletedGeometry = inputShape.geometry;\n    if (edgeSelector) {\n        filletedGeometry = inputShape.geometry.fillet(radius, edgeSelector);\n    }\n    else {\n        filletedGeometry = inputShape.geometry.fillet(radius);\n    }\n    // ── Step 3: Wrap in an Assembly preserving upstream properties ──────────\n    // Color, tags, and BOM info are inherited from the input shape.\n    const result = new Assembly({\n        geometry: filletedGeometry,\n        color: inputShape.color,\n        tags: inputShape.tags,\n        plane: inputShape.plane,\n        bom: inputShape.bom,\n    });\n    return result;\n}\n"
+                      "code": "/**\n * Rounds sharp edges on a 3D solid geometry using fillets.\n * A fillet smooths out edges by rounding them to a specified radius.\n * All parameters have defaults so the atom works immediately.\n */\nfunction run(\n  inputShape: Assembly,\n  radius: number = 1.5,\n  edgeSelector?: boolean\n): Assembly {\n  // ── Step 1: Validate input geometry ──────────────────────────────────────\n  // Fillets only work on 3D solids, not 2D sketches or wires.\n  if (!inputShape?.geometry?.fillet) {\n    throw new Error(\"Input must be a 3D solid geometry\");\n  }\n\n  // ── Step 2: Apply fillet to selected edges ──────────────────────────────\n  // If no edge selector is provided, fillet all edges.\n  // Pass a selector like (e) => e.inPlane(\"XY\", z) to fillet only specific edges.\n  let filletedGeometry = inputShape.geometry;\n \n    filletedGeometry = inputShape.geometry.fillet(radius);\n\n\n  // ── Step 3: Wrap in an Assembly preserving upstream properties ──────────\n  // Color, tags, and BOM info are inherited from the input shape.\n  const result: Assembly = new Assembly({\n    geometry: filletedGeometry,\n    color: inputShape.color,\n    tags: inputShape.tags,\n    plane: inputShape.plane,\n    bom: inputShape.bom,\n  });\n\n  return result;\n}",
+                      "compiledCode": "\"use strict\";\n/**\n * Rounds sharp edges on a 3D solid geometry using fillets.\n * A fillet smooths out edges by rounding them to a specified radius.\n * All parameters have defaults so the atom works immediately.\n */\nfunction run(inputShape, radius = 1.5, edgeSelector) {\n    // ── Step 1: Validate input geometry ──────────────────────────────────────\n    // Fillets only work on 3D solids, not 2D sketches or wires.\n    if (!inputShape?.geometry?.fillet) {\n        throw new Error(\"Input must be a 3D solid geometry\");\n    }\n    // ── Step 2: Apply fillet to selected edges ──────────────────────────────\n    // If no edge selector is provided, fillet all edges.\n    // Pass a selector like (e) => e.inPlane(\"XY\", z) to fillet only specific edges.\n    let filletedGeometry = inputShape.geometry;\n    filletedGeometry = inputShape.geometry.fillet(radius);\n    // ── Step 3: Wrap in an Assembly preserving upstream properties ──────────\n    // Color, tags, and BOM info are inherited from the input shape.\n    const result = new Assembly({\n        geometry: filletedGeometry,\n        color: inputShape.color,\n        tags: inputShape.tags,\n        plane: inputShape.plane,\n        bom: inputShape.bom,\n    });\n    return result;\n}\n"
                     }
                   ],
                   "allConnectors": [
                     {
                       "ap2Name": "inputShape",
-                      "ap1ID": "id-261793",
-                      "ap2ID": "id-261798"
+                      "ap1ID": "id-262309",
+                      "ap2ID": "id-262313"
                     },
                     {
                       "ap2Name": "radius",
-                      "ap1ID": "id-261794",
-                      "ap2ID": "id-261798"
+                      "ap1ID": "id-262310",
+                      "ap2ID": "id-262313"
                     },
                     {
                       "ap2Name": "geometry",
-                      "ap1ID": "id-261796",
-                      "ap2ID": "id-261797"
-                    },
-                    {
-                      "ap2Name": "inputShape",
-                      "ap1ID": "id-261797",
-                      "ap2ID": "id-261795"
+                      "ap1ID": "id-262311",
+                      "ap2ID": "id-262312"
                     },
                     {
                       "ap2Name": "number or geometry",
-                      "ap1ID": "id-261798",
-                      "ap2ID": "id-261792"
+                      "ap1ID": "id-262313",
+                      "ap2ID": "id-262308"
                     }
                   ],
                   "parentRepo": {
@@ -3245,7 +3221,7 @@
                   },
                   "unitsKey": "MM",
                   "fileTypeVersion": 1,
-                  "lastReloadedFromGithubAt": 1780506556715
+                  "lastReloadedFromGithubAt": 1780506770301
                 }
               ],
               "allConnectors": [
@@ -3257,11 +3233,11 @@
                 {
                   "ap2Name": "Shape",
                   "ap1ID": "id-260192",
-                  "ap2ID": "id-261799"
+                  "ap2ID": "id-262314"
                 },
                 {
                   "ap2Name": "number or geometry",
-                  "ap1ID": "id-261799",
+                  "ap1ID": "id-262314",
                   "ap2ID": "id-260190"
                 }
               ],

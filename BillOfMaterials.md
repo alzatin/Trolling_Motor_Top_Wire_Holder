@@ -2,4 +2,6 @@
 # Bill Of Materials 
  |Part|Number Needed|Price|Source| 
  |----|----------|-----|-----|
-|Total: |0|$0.00| |
+|New Item|4|$0.00||
+|25mm M3 Bolt|4|$0.00||
+|Total: |8|$0.00| |
