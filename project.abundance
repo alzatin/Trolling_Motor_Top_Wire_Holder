@@ -1393,8 +1393,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.36177248677248675,
-      "y": 0.818941504178273,
+      "x": 0.36952554744525545,
+      "y": 0.8048780487804879,
       "uniqueID": "id-260107",
       "name": "Handle",
       "topLevel": false,
@@ -2552,8 +2552,8 @@
         },
         {
           "atomType": "Molecule",
-          "x": 0.16997354497354497,
-          "y": 0.2785515320334262,
+          "x": 0.17062043795620438,
+          "y": 0.27439024390243905,
           "uniqueID": "id-260185",
           "name": "Plastic",
           "topLevel": false,
@@ -3245,8 +3245,8 @@
             },
             {
               "atomType": "Molecule",
-              "x": 0.08617424242424243,
-              "y": 0.4725609756097561,
+              "x": 0.08302919708029197,
+              "y": 0.4847560975609756,
               "uniqueID": "id-260267",
               "name": "Wire Path",
               "topLevel": false,
@@ -3483,9 +3483,9 @@
                 },
                 {
                   "atomType": "GitHubMolecule",
-                  "x": 0.7566137566137566,
-                  "y": 0.5654596100278552,
-                  "uniqueID": "id-260333",
+                  "x": 0.6897810218978102,
+                  "y": 0.7225609756097561,
+                  "uniqueID": "id-262826",
                   "name": "Fillet-",
                   "ioValues": [
                     {
@@ -3494,7 +3494,7 @@
                     },
                     {
                       "name": "Radius",
-                      "ioValue": 5
+                      "ioValue": 2
                     }
                   ],
                   "topLevel": false,
@@ -3503,7 +3503,7 @@
                       "atomType": "Output",
                       "x": 0.98,
                       "y": 0.5,
-                      "uniqueID": "id-260324",
+                      "uniqueID": "id-262820",
                       "ioValues": [
                         {
                           "name": "number or geometry",
@@ -3515,91 +3515,23 @@
                       "atomType": "Input",
                       "x": 0.025384615384615384,
                       "y": 0.15384615384615385,
-                      "uniqueID": "id-260325",
+                      "uniqueID": "id-262821",
                       "name": "Shape",
                       "type": "geometry"
-                    },
-                    {
-                      "atomType": "Rectangle",
-                      "x": 0.15013227513227512,
-                      "y": 0.2562674094707521,
-                      "uniqueID": "id-260326",
-                      "ioValues": [
-                        {
-                          "name": "x length",
-                          "ioValue": 10
-                        },
-                        {
-                          "name": "y length",
-                          "ioValue": 10
-                        }
-                      ]
-                    },
-                    {
-                      "atomType": "Extrude",
-                      "x": 0.3353174603174603,
-                      "y": 0.15598885793871867,
-                      "uniqueID": "id-260327",
-                      "ioValues": [
-                        {
-                          "name": "geometry",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        },
-                        {
-                          "name": "height",
-                          "ioValue": 10
-                        }
-                      ]
                     },
                     {
                       "atomType": "Input",
                       "x": 0.025384615384615384,
                       "y": 0.24615384615384617,
-                      "uniqueID": "id-260328",
+                      "uniqueID": "id-262822",
                       "name": "Radius",
                       "type": "number"
-                    },
-                    {
-                      "atomType": "Code",
-                      "x": 0.4920634920634921,
-                      "y": 0.5766016713091923,
-                      "uniqueID": "id-260329",
-                      "ioValues": [
-                        {
-                          "name": "inputShape",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        },
-                        {
-                          "name": "radius",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        }
-                      ],
-                      "interpreterVersion": 0,
-                      "code": "      //Inputs:[inputShape, radius]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n      let importedShape = library[inputShape]\n      \n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let chamferedShape = await Fillet(inputShape, radius);\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [chamferedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1"
-                    },
-                    {
-                      "atomType": "Code",
-                      "x": 0.3597883597883598,
-                      "y": 0.777158774373259,
-                      "uniqueID": "id-260330",
-                      "ioValues": [
-                        {
-                          "name": "inputShape",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        },
-                        {
-                          "name": "radius",
-                          "ioValue": "__GEOMETRY_INPUT__"
-                        }
-                      ],
-                      "interpreterVersion": 0,
-                      "code": "      //Inputs:[inputShape, radius]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n      let importedShape = library[inputShape]\n      \n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let chamferedShape = await Fillet(inputShape, radius);\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [chamferedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1"
                     },
                     {
                       "atomType": "Rectangle",
                       "x": 0.07738095238095238,
                       "y": 0.8495821727019498,
-                      "uniqueID": "id-260331",
+                      "uniqueID": "id-262823",
                       "ioValues": [
                         {
                           "name": "x length",
@@ -3615,7 +3547,7 @@
                       "atomType": "Extrude",
                       "x": 0.17539682539682538,
                       "y": 0.8217270194986073,
-                      "uniqueID": "id-260332",
+                      "uniqueID": "id-262824",
                       "ioValues": [
                         {
                           "name": "geometry",
@@ -3626,66 +3558,73 @@
                           "ioValue": 100
                         }
                       ]
+                    },
+                    {
+                      "atomType": "Code",
+                      "x": 0.4901639344262295,
+                      "y": 0.42378048780487804,
+                      "uniqueID": "id-262825",
+                      "ioValues": [
+                        {
+                          "name": "inputShape",
+                          "ioValue": "__GEOMETRY_INPUT__"
+                        },
+                        {
+                          "name": "radius",
+                          "ioValue": 2
+                        }
+                      ],
+                      "interpreterVersion": 1,
+                      "code": "/**\n * Rounds sharp edges on a 3D solid geometry using fillets.\n * A fillet smooths out edges by rounding them to a specified radius.\n * All parameters have defaults so the atom works immediately.\n */\nfunction run(\n  inputShape: Assembly,\n  radius: number = 1.5,\n  edgeSelector?: boolean\n): Assembly {\n  // ── Step 1: Validate input geometry ──────────────────────────────────────\n  // Fillets only work on 3D solids, not 2D sketches or wires.\n  if (!inputShape?.geometry?.fillet) {\n    throw new Error(\"Input must be a 3D solid geometry\");\n  }\n\n  // ── Step 2: Apply fillet to selected edges ──────────────────────────────\n  // If no edge selector is provided, fillet all edges.\n  // Pass a selector like (e) => e.inPlane(\"XY\", z) to fillet only specific edges.\n  let filletedGeometry = inputShape.geometry;\n \n    filletedGeometry = inputShape.geometry.fillet(radius);\n\n\n  // ── Step 3: Wrap in an Assembly preserving upstream properties ──────────\n  // Color, tags, and BOM info are inherited from the input shape.\n  const result: Assembly = new Assembly({\n    geometry: filletedGeometry,\n    color: inputShape.color,\n    tags: inputShape.tags,\n    plane: inputShape.plane,\n    bom: inputShape.bom,\n  });\n\n  return result;\n}",
+                      "compiledCode": "\"use strict\";\n/**\n * Rounds sharp edges on a 3D solid geometry using fillets.\n * A fillet smooths out edges by rounding them to a specified radius.\n * All parameters have defaults so the atom works immediately.\n */\nfunction run(inputShape, radius = 1.5, edgeSelector) {\n    // ── Step 1: Validate input geometry ──────────────────────────────────────\n    // Fillets only work on 3D solids, not 2D sketches or wires.\n    if (!inputShape?.geometry?.fillet) {\n        throw new Error(\"Input must be a 3D solid geometry\");\n    }\n    // ── Step 2: Apply fillet to selected edges ──────────────────────────────\n    // If no edge selector is provided, fillet all edges.\n    // Pass a selector like (e) => e.inPlane(\"XY\", z) to fillet only specific edges.\n    let filletedGeometry = inputShape.geometry;\n    filletedGeometry = inputShape.geometry.fillet(radius);\n    // ── Step 3: Wrap in an Assembly preserving upstream properties ──────────\n    // Color, tags, and BOM info are inherited from the input shape.\n    const result = new Assembly({\n        geometry: filletedGeometry,\n        color: inputShape.color,\n        tags: inputShape.tags,\n        plane: inputShape.plane,\n        bom: inputShape.bom,\n    });\n    return result;\n}\n"
                     }
                   ],
                   "allConnectors": [
                     {
                       "ap2Name": "inputShape",
-                      "ap1ID": "id-260325",
-                      "ap2ID": "id-260329"
-                    },
-                    {
-                      "ap2Name": "geometry",
-                      "ap1ID": "id-260326",
-                      "ap2ID": "id-260327"
+                      "ap1ID": "id-262821",
+                      "ap2ID": "id-262825"
                     },
                     {
                       "ap2Name": "radius",
-                      "ap1ID": "id-260328",
-                      "ap2ID": "id-260329"
-                    },
-                    {
-                      "ap2Name": "number or geometry",
-                      "ap1ID": "id-260329",
-                      "ap2ID": "id-260324"
+                      "ap1ID": "id-262822",
+                      "ap2ID": "id-262825"
                     },
                     {
                       "ap2Name": "geometry",
-                      "ap1ID": "id-260331",
-                      "ap2ID": "id-260332"
+                      "ap1ID": "id-262823",
+                      "ap2ID": "id-262824"
                     },
                     {
-                      "ap2Name": "inputShape",
-                      "ap1ID": "id-260332",
-                      "ap2ID": "id-260330"
+                      "ap2Name": "number or geometry",
+                      "ap1ID": "id-262825",
+                      "ap2ID": "id-262820"
                     }
                   ],
                   "parentRepo": {
-                    "lastFoundGit": "2026-05-30T18:23:39.123Z",
                     "privateRepo": false,
                     "repoName": "Fillet-",
-                    "dateCreated": "2025-03-13T05:08:33Z",
-                    "likes": 0,
-                    "readMe": "https://raw.githubusercontent.com/BarbourSmith/Fillet-/master/README.md?sanitize=true",
-                    "yyyy": 2025,
+                    "dateCreated": "2026-06-03T16:40:27Z",
+                    "readMe": "https://raw.githubusercontent.com/alzatin/Fillet-/master/README.md?sanitize=true",
+                    "yyyy": 2026,
                     "topMoleculeID": 1741842512908,
                     "githubMoleculesUsed": [],
-                    "html_url": "https://github.com/BarbourSmith/Fillet-",
+                    "html_url": "https://github.com/alzatin/Fillet-",
                     "topics": [],
-                    "parentRepo": null,
+                    "parentRepo": "BarbourSmith/Fillet-",
                     "forks": 0,
-                    "dateModified": "739604",
-                    "ranking": 8.7,
-                    "searchField": "fillet- barboursmith fillets every edge of an input shape ",
-                    "owner": "BarbourSmith",
+                    "dateModified": "739770",
+                    "ranking": 0,
+                    "searchField": "fillet- alzatin fillets every edge of an input shape ",
+                    "owner": "alzatin",
                     "description": "Fillets every edge of an input shape",
-                    "contentURL": "https://raw.githubusercontent.com/BarbourSmith/Fillet-/master/project.abundance?sanitize=true",
-                    "svgURL": "https://raw.githubusercontent.com/BarbourSmith/Fillet-/master/project.svg?sanitize=true",
+                    "contentURL": "https://raw.githubusercontent.com/alzatin/Fillet-/master/project.abundance?sanitize=true",
+                    "svgURL": "https://raw.githubusercontent.com/alzatin/Fillet-/master/project.svg?sanitize=true",
                     "isLocal": false
                   },
                   "unitsKey": "MM",
                   "fileTypeVersion": 1,
-                  "lastReloadedFromGithubAt": 1780174890063
+                  "lastReloadedFromGithubAt": 1780506837638
                 }
               ],
               "allConnectors": [
@@ -3707,7 +3646,7 @@
                 {
                   "ap2Name": "Shape",
                   "ap1ID": "id-260289",
-                  "ap2ID": "id-260333"
+                  "ap2ID": "id-262826"
                 },
                 {
                   "ap2Name": "Shape 2",
@@ -3736,7 +3675,7 @@
                 },
                 {
                   "ap2Name": "number or geometry",
-                  "ap1ID": "id-260333",
+                  "ap1ID": "id-262826",
                   "ap2ID": "id-260269"
                 }
               ],
